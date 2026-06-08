@@ -21,33 +21,46 @@ Reproduction code and data for the paper.
 
 ## Quick Start
 
-### Docker (recommended — zero setup)
+### Smoke test (verify environment, ~30s)
 
 ```bash
-# Build and run ablation
-docker compose up ablation
+# GPU
+docker compose --profile gpu up smoke
 
-# Or run specific experiments
-docker compose run --rm astar
-docker compose run --rm figures
+# CPU-only
+docker compose up smoke-cpu
 ```
 
-No Docker? No GPU? Use the CPU-only image:
+### Option A: Use pre-computed results (instant)
+
+The file `results.jsonl` contains all 18 ablation runs from the paper. Figures can be generated directly:
 
 ```bash
-docker build -t anti-forgetting .
-docker run --rm anti-forgetting python run_ablations.py
+docker compose up figures        # → figures_out/
 ```
 
-### Manual Setup
+### Option B: Reproduce from scratch
 
 ```bash
-pip install -r requirements.txt
+# GPU (~2 hours): requires nvidia-container-toolkit
+docker compose --profile gpu up ablation
+
+# CPU (~20 hours): no GPU needed
+docker compose up ablation-cpu
+
+# A* gating experiment (~20 min GPU)
+docker compose --profile gpu up astar
+```
+
+> ⚠️ The ablation runs 6 configs × 3 seeds = 18 experiments. On CPU this is slow but works — the code auto-detects CUDA and falls back to CPU. All results match the paper's `results.jsonl` within statistical noise (random seed variation).
+
+### Option C: Manual setup
+
+```bash
+pip install torch numpy matplotlib
 python run_ablations.py           # ~1.2 GPU-hours
 python test_astar_matters.py      # A* gating
-python run_astar_extra.py         # Additional seeds
 python figures.py                 # Generate figures
-python fig_astar.py               # A* figure
 ```
 
 ## Key Results

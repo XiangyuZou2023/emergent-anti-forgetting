@@ -1,27 +1,49 @@
+# GPU (requires nvidia-container-toolkit)
+#   docker compose --profile gpu up ablation
+# CPU (any machine, slower)
+#   docker compose up ablation-cpu
+
 services:
+  # ── Smoke test (~30s) ──
+  smoke:
+    build: .
+    profiles: [gpu]
+    runtime: nvidia
+    environment: [NVIDIA_VISIBLE_DEVICES=all]
+    command: python smoke_test.py
+
+  smoke-cpu:
+    build: .
+    command: python smoke_test.py
+
+  # ── Ablation (18 runs, ~2h GPU / ~20h CPU) ──
   ablation:
     build: .
+    profiles: [gpu]
     runtime: nvidia
-    environment:
-      - NVIDIA_VISIBLE_DEVICES=all
-    volumes:
-      - ./results:/workspace/results
+    environment: [NVIDIA_VISIBLE_DEVICES=all]
+    volumes: [./results:/workspace/results]
     command: python run_ablations.py
 
+  ablation-cpu:
+    build: .
+    volumes: [./results:/workspace/results]
+    command: python run_ablations.py
+
+  # ── A* gating (~20min GPU) ──
   astar:
     build: .
+    profiles: [gpu]
     runtime: nvidia
-    environment:
-      - NVIDIA_VISIBLE_DEVICES=all
-    volumes:
-      - ./results:/workspace/results
+    environment: [NVIDIA_VISIBLE_DEVICES=all]
     command: python test_astar_matters.py
 
+  astar-cpu:
+    build: .
+    command: python test_astar_matters.py
+
+  # ── Figures only (~1min) ──
   figures:
     build: .
-    runtime: nvidia
-    environment:
-      - NVIDIA_VISIBLE_DEVICES=all
-    volumes:
-      - ./results:/workspace/results
+    volumes: [./figures_out:/workspace/figures]
     command: python figures.py
