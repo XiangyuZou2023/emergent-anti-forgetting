@@ -23,7 +23,7 @@ print(f"Device: {DEV}")
 # ═══════════════════════════════════════════════════════════════
 # Data
 # ═══════════════════════════════════════════════════════════════
-DATA_PATH = os.path.join(os.path.dirname(__file__), '..', 'data', 'cc_clean.txt')
+DATA_PATH = os.path.join(os.path.dirname(__file__), 'sample_data.txt')
 with open(DATA_PATH, 'r', encoding='utf-8') as f:
     raw = f.read(300_000)
 cnt = Counter(raw)

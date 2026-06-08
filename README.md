@@ -16,6 +16,7 @@ Reproduction code and data for the paper.
 | `gruau_result.json` | Gruau architecture learnability test |
 | `moe_result.json` | MoE survival-driven specialization |
 | `references.bib` | All citations in BibTeX format |
+| `sample_data.txt` | Chinese text corpus sample (300K chars) |
 | `requirements.txt` | Python dependencies |
 
 ## Quick Start
