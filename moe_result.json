@@ -1,0 +1,14 @@
+{
+  "single_expert": 0.36,
+  "ensemble_best": 0.95,
+  "ensemble_range": [
+    0.91,
+    0.95
+  ],
+  "delta": 0.59,
+  "experts": 10,
+  "vocab": 15,
+  "generations": 12,
+  "seeds": 1,
+  "verified": "2026-06-09"
+}
