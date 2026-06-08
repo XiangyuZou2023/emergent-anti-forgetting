@@ -1,0 +1,27 @@
+services:
+  ablation:
+    build: .
+    runtime: nvidia
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+    volumes:
+      - ./results:/workspace/results
+    command: python run_ablations.py
+
+  astar:
+    build: .
+    runtime: nvidia
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+    volumes:
+      - ./results:/workspace/results
+    command: python test_astar_matters.py
+
+  figures:
+    build: .
+    runtime: nvidia
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+    volumes:
+      - ./results:/workspace/results
+    command: python figures.py

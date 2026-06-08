@@ -21,19 +21,33 @@ Reproduction code and data for the paper.
 
 ## Quick Start
 
+### Docker (recommended — zero setup)
+
+```bash
+# Build and run ablation
+docker compose up ablation
+
+# Or run specific experiments
+docker compose run --rm astar
+docker compose run --rm figures
+```
+
+No Docker? No GPU? Use the CPU-only image:
+
+```bash
+docker build -t anti-forgetting .
+docker run --rm anti-forgetting python run_ablations.py
+```
+
+### Manual Setup
+
 ```bash
 pip install -r requirements.txt
-
-# Run ablation (GPU recommended, ~1.2 GPU-hours total)
-python run_ablations.py
-
-# Run A* gating comparison
-python test_astar_matters.py
-python run_astar_extra.py
-
-# Generate figures
-python figures.py
-python fig_astar.py
+python run_ablations.py           # ~1.2 GPU-hours
+python test_astar_matters.py      # A* gating
+python run_astar_extra.py         # Additional seeds
+python figures.py                 # Generate figures
+python fig_astar.py               # A* figure
 ```
 
 ## Key Results

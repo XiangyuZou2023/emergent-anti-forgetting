@@ -8,7 +8,7 @@ import torch, torch.nn as nn, torch.nn.functional as F
 import numpy as np, random, time, json, os
 from collections import Counter
 
-DEV = torch.device('cuda')
+DEV = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 D = 64
 POP, GEN = 40, 40  # quick run
 SEEDS = [42, 123]
