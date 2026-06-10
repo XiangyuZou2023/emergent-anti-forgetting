@@ -65,20 +65,41 @@ python figures.py                 # Generate figures
 
 ## Key Results
 
-### Ablation: Evolution = Zero Forgetting
+### Reproduce Paper Tables & Figures
+
+| Paper Element | Command | Output | Time |
+|--------------|---------|--------|------|
+| **Table 1** (Ablation, 6 configs×3 seeds) | `python run_ablations.py --config all` (run each config separately) | `results.jsonl` | ~1.2 GPU-hr |
+| **Table 2** (A* gating, 5 seeds) | `python test_astar_matters.py && python run_astar_extra.py` | `astar_5seeds.json` | ~0.3 GPU-hr |
+| **Figure 1-4** (Forgetting, accuracy, ablation, violin) | `python figures.py` | `figures/fig1-4_*.pdf` | <1 min |
+| **Figure 5** (A* gating) | `python fig_astar.py` | `figures/fig5_astar_gating.pdf` | <1 min |
+| **High-Variance Exploration** (Section 4.5) | `python test_high_variance.py` | console output + `hv_results.json` | ~13 min GPU |
+| **Diversity vs A* Gate** (Section 4.2 supplement) | `python test_diversity_astar.py` | console output | ~5 min GPU |
+| **Niche Protection Variants** | `python test_diversity_tough.py` | console output | ~8 min GPU |
+| **text8 High-Variance** | `python test_text8_hv.py` | console output | ~10 min GPU |
+| **Smoke test** (verify env) | `python smoke_test.py` | pass/fail | ~30s |
+
+### Expected Results
+
+#### Ablation (Table 1): Evolution = Zero Forgetting
 All 4 evolving configurations → forgetting ≤ 0.
 Fixed architectures → forgetting +0.02.
 
-### A* Gating: Prevents Population Collapse
+#### A* Gating (Table 2): Prevents Population Collapse
 WITH gate: 94% alive, vocab reaches 58.
 WITHOUT gate: 3% alive, vocab stuck at 12.
 
-### Gruau Architecture Learnability
-Evolved architecture: 100% convergence (10/10 trials).
-Random architecture: 39% convergence (0/20).
+#### High-Variance Exploration (Section 4.5)
+Standard search: vocab ~52. High-variance search: vocab ~175 (+237%).
+Zero forgetting maintained. A* > 2.0. Confirms ceiling is search-limited.
 
-### MoE Survival-Driven Specialization
+#### text8 High-Variance
+All search strategies stuck at vocab=7, acc~0.57.
+Capacity-limited (D=64 single-layer), not search-limited.
+
+#### MoE Survival-Driven Specialization
 Single expert: 0.360. 10-expert ensemble: 0.950 (+0.590).
+Expert specialization via capacity distribution (10×640 vs 64 dims).
 
 ## License
 
