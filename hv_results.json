@@ -1,0 +1,115 @@
+{
+  "experiment": "high_variance_adhd_simulation",
+  "date": "2026-06-10",
+  "configs": {
+    "standard": {
+      "mut_prob": 0.4,
+      "mut_scale": 0.2,
+      "fit_cutoff_pct": 30,
+      "random_inject": 0,
+      "niche_grace": 0
+    },
+    "niche_div5_cut40": {
+      "mut_prob": 0.4,
+      "mut_scale": 0.2,
+      "fit_cutoff_pct": 40,
+      "random_inject": 0,
+      "niche_grace": 5
+    },
+    "high_var_only": {
+      "mut_prob": 0.7,
+      "mut_scale": 0.4,
+      "fit_cutoff_pct": 30,
+      "random_inject": 5,
+      "niche_grace": 0
+    },
+    "high_var_cut40": {
+      "mut_prob": 0.7,
+      "mut_scale": 0.4,
+      "fit_cutoff_pct": 40,
+      "random_inject": 5,
+      "niche_grace": 0
+    },
+    "full_adhd": {
+      "mut_prob": 0.7,
+      "mut_scale": 0.4,
+      "fit_cutoff_pct": 40,
+      "random_inject": 5,
+      "niche_grace": 5
+    }
+  },
+  "chinese_char_results": {
+    "standard": {
+      "vocab": 52,
+      "accA": 0.926,
+      "retA": 0.925,
+      "forget": 0.001,
+      "alive_pct": 94,
+      "sr": 1.213,
+      "A_star": 2.587
+    },
+    "niche_div5_cut40": {
+      "vocab": 148,
+      "accA": 0.851,
+      "retA": 0.859,
+      "forget": -0.008,
+      "alive_pct": 86,
+      "sr": 1.349,
+      "A_star": 2.135
+    },
+    "high_var_only": {
+      "vocab": 175,
+      "accA": 0.826,
+      "retA": 0.847,
+      "forget": -0.021,
+      "alive_pct": 86,
+      "sr": 1.357,
+      "A_star": 2.388
+    },
+    "high_var_cut40": {
+      "vocab": 175,
+      "accA": 0.83,
+      "retA": 0.843,
+      "forget": -0.013,
+      "alive_pct": 95,
+      "sr": 1.409,
+      "A_star": 2.66
+    },
+    "full_adhd": {
+      "vocab": 198,
+      "accA": 0.815,
+      "retA": 0.835,
+      "forget": -0.019,
+      "alive_pct": 81,
+      "sr": 1.359,
+      "A_star": 2.271
+    }
+  },
+  "text8_results": {
+    "note": "text8 (27 chars) bottleneck is model capacity (D=64), not architecture. All configs stuck at vocab=7, acc~0.57.",
+    "standard": {
+      "vocab": 7,
+      "accA": 0.567,
+      "retA": 0.577,
+      "forget": -0.01
+    },
+    "high_var_cut40": {
+      "vocab": 7,
+      "accA": 0.567,
+      "retA": 0.577,
+      "forget": -0.01
+    },
+    "full_adhd": {
+      "vocab": 7,
+      "accA": 0.566,
+      "retA": 0.585,
+      "forget": -0.019
+    }
+  },
+  "key_finding": "High-variance exploration (mut_prob=0.7, mut_scale=0.4, fit_cutoff=40%, random_inject=5) raises task complexity ceiling from vocab=52 to 175 (+237%) while maintaining A* gate integrity (A*>2.0) and zero forgetting.",
+  "seeds": [
+    42,
+    123
+  ],
+  "reproducible": true
+}
