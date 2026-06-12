@@ -13,7 +13,7 @@ D = 64
 POP, GEN = 40, 40  # quick run
 SEEDS = [42, 123]
 
-with open(os.path.join(os.path.dirname(__file__), '..', 'data', 'cc_clean.txt'), 'r', encoding='utf-8') as f:
+with open(os.path.join(os.path.dirname(__file__), 'sample_data.txt'), 'r', encoding='utf-8') as f:
     raw = f.read(300_000)
 cnt = Counter(raw)
 all_chars = sorted([c for c, n in cnt.items() if n >= 5 and '一' <= c <= '鿿'])

@@ -63,8 +63,8 @@ CONFIG_COLORS = {
     'no_astar': '#A23B72',
     'no_ret': '#F18F01',
     'no_tax': '#C73E1D',
-    'fixed_best': '#6B7D8D',
-    'fixed_ffwd': '#9BA2AA',
+    'fixed_best': '#D64933',
+    'fixed_ffwd': '#E87461',
 }
 
 # ══════════════════════════════════════════════════════

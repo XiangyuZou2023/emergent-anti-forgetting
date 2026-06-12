@@ -1,13 +1,18 @@
-FROM pytorch/pytorch:2.6.0-cuda12.4-cudnn9-runtime
+FROM pytorch/pytorch:2.12.0-cuda13.2-cudnn9-runtime
 
 WORKDIR /workspace
 
-# Copy everything
+# Pass proxy through build args
+ARG HTTP_PROXY
+ARG HTTPS_PROXY
+ARG NO_PROXY
+ENV HTTP_PROXY=${HTTP_PROXY} \
+    HTTPS_PROXY=${HTTPS_PROXY} \
+    NO_PROXY=${NO_PROXY}
+
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir --break-system-packages -r requirements.txt
 
 COPY . .
 
-# Default: run ablation experiment
-# Override with: docker run ... python test_astar_matters.py
 CMD ["python", "run_ablations.py"]

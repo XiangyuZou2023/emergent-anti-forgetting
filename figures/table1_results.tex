@@ -1,0 +1,17 @@
+\begin{table}[ht]
+\centering
+\caption{Full experimental results. 6 configurations ¡Á 3 seeds. Mean ¡À std.}
+\label{tab:results}
+\begin{tabular}{lcccccc}
+\toprule
+Config & Acc$_A$ & Acc$_B$ & Ret$_A$ & Forgetting & Vocab & A* (med H) \\
+\midrule
+Full (A*+Ret+Tax) & 0.868¡À0.012 & 0.879¡À0.005 & 0.874¡À0.007 & -0.006¡À0.008 & 130 & 7.9 \\
+No A* Gate & 0.866¡À0.014 & 0.877¡À0.010 & 0.869¡À0.010 & -0.003¡À0.007 & 127 & 7.0 \\
+No A¡úB¡úA & 0.876¡À0.003 & 0.884¡À0.001 & 0.882¡À0.005 & -0.006¡À0.004 & 120 & 7.3 \\
+No Tax & 0.898¡À0.006 & 0.902¡À0.004 & 0.900¡À0.004 & -0.002¡À0.005 & 88 & 5.1 \\
+Fixed (Best Params) & 0.962¡À0.016 & 0.955¡À0.000 & 0.942¡À0.012 & +0.020¡À0.027 & 30 & 30.6 \\
+Fixed (Feedforward) & 0.960¡À0.016 & 0.955¡À0.000 & 0.942¡À0.012 & +0.018¡À0.027 & 30 & 0.0 \\
+\bottomrule
+\end{tabular}
+\end{table}

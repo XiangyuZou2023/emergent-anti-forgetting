@@ -2,23 +2,37 @@
 #   docker compose --profile gpu up ablation
 # CPU (any machine, slower)
 #   docker compose up ablation-cpu
+#
+# In China? Set proxy in Docker Desktop → Resources → Proxies
+#   HTTP: http://<host-ip>:7897  HTTPS: http://<host-ip>:7897
+
+x-proxy: &proxy
+  HTTP_PROXY: "http://172.26.160.1:7897"
+  HTTPS_PROXY: "http://172.26.160.1:7897"
+  NO_PROXY: "localhost,127.0.0.1,.tsinghua.edu.cn,.tuna.tsinghua.edu.cn"
 
 services:
   # ── Smoke test (~30s) ──
   smoke:
-    build: .
+    build:
+      context: .
+      args: *proxy
     profiles: [gpu]
     runtime: nvidia
     environment: [NVIDIA_VISIBLE_DEVICES=all]
     command: python smoke_test.py
 
   smoke-cpu:
-    build: .
+    build:
+      context: .
+      args: *proxy
     command: python smoke_test.py
 
   # ── Ablation (18 runs, ~2h GPU / ~20h CPU) ──
   ablation:
-    build: .
+    build:
+      context: .
+      args: *proxy
     profiles: [gpu]
     runtime: nvidia
     environment: [NVIDIA_VISIBLE_DEVICES=all]
@@ -26,24 +40,32 @@ services:
     command: python run_ablations.py
 
   ablation-cpu:
-    build: .
+    build:
+      context: .
+      args: *proxy
     volumes: [./results:/workspace/results]
     command: python run_ablations.py
 
   # ── A* gating (~20min GPU) ──
   astar:
-    build: .
+    build:
+      context: .
+      args: *proxy
     profiles: [gpu]
     runtime: nvidia
     environment: [NVIDIA_VISIBLE_DEVICES=all]
     command: python test_astar_matters.py
 
   astar-cpu:
-    build: .
+    build:
+      context: .
+      args: *proxy
     command: python test_astar_matters.py
 
   # ── Figures only (~1min) ──
   figures:
-    build: .
+    build:
+      context: .
+      args: *proxy
     volumes: [./figures_out:/workspace/figures]
     command: python figures.py
