@@ -1,0 +1,23 @@
+=== 做法A 真泛化压力测试 ===
+Genome: sr=0.8723 gain=0.1236 sp=0.5353
+Core.W trained with emb+ro | Mountain 1 generalization
+Target D: 256 | D256 wins if test_acc ratio >= 1.2
+
+Grid:
+
+  v=  30 steps= 100  D64_test=0.9922  D256_test=0.9922  ratio=1.000  CEILING
+  v=  30 steps= 200  D64_test=0.9922  D256_test=0.9922  ratio=1.000  CEILING
+  v=  30 steps= 400  D64_test=0.9922  D256_test=0.9922  ratio=1.000  CEILING
+  v=  30 steps= 800  D64_test=0.9922  D256_test=0.9922  ratio=1.000  CEILING
+  v= 100 steps= 100  D64_test=0.9766  D256_test=0.9766  ratio=1.000  CEILING
+  v= 100 steps= 200  D64_test=0.9766  D256_test=0.9766  ratio=1.000  CEILING
+  v= 100 steps= 400  D64_test=0.9766  D256_test=0.9766  ratio=1.000  CEILING
+  v= 100 steps= 800  D64_test=0.9766  D256_test=0.9766  ratio=1.000  CEILING
+  v= 200 steps= 100  D64_test=0.9512  D256_test=0.9512  ratio=1.000  CEILING
+  v= 200 steps= 200  D64_test=0.9512  D256_test=0.9512  ratio=1.000  CEILING
+  v= 200 steps= 400  D64_test=0.9512  D256_test=0.9512  ratio=1.000  CEILING
+  v= 200 steps= 800  D64_test=0.9512  D256_test=0.9512  ratio=1.000  CEILING
+  v= 500 steps= 100  D64_test=0.8477  D256_test=0.8477  ratio=1.000  TIED
+  v= 500 steps= 200  D64_test=0.8477  D256_test=0.8477  ratio=1.000  TIED
+  v= 500 steps= 400  D64_test=0.8477  D256_test=0.8477  ratio=1.000  TIED
+  v= 500 steps= 800  D64_test=0.8477  D256_test=0.8477  ratio=1.000  TIED

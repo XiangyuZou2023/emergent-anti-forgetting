@@ -1,0 +1,16 @@
+=== 做法A 渐进难度测试 ===
+Genome: sr=0.8102 gain=0.0000 sp=0.5490
+Target D: 256 | Fail ratio: 0.8 | Tie ratio: 0.95
+
+Results:
+
+  vocab=  30  D64=0.9892  D256=0.9892  ratio=1.000  AT_CEILING
+  vocab=  50  D64=0.9834  D256=0.9835  ratio=1.000  AT_CEILING
+  vocab=  75  D64=0.9747  D256=0.9747  ratio=1.000  AT_CEILING
+  vocab= 100  D64=0.9686  D256=0.9687  ratio=1.000  AT_CEILING
+  vocab= 150  D64=0.9579  D256=0.9582  ratio=1.000  AT_CEILING
+  vocab= 200  D64=0.9487  D256=0.9491  ratio=1.000  TIED
+  vocab= 300  D64=0.9087  D256=0.9109  ratio=1.002  TIED
+  vocab= 500  D64=0.7972  D256=0.8106  ratio=1.017  TIED
+
+Sweep complete, no hard failure found.

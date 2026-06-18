@@ -1,0 +1,22 @@
+=== 做法A 移植研究总结 ===
+日期: 2026-06-13 13:05
+
+D=64 最优 genome: sr=0.9329 gain=0.1119 sp=0.5723
+  A*: 2.011
+  泛化训练: A acc=0.9444 B acc=0.9892
+
+D=256 移植 (3 copies):
+  Copy 1: A*=1.958
+    泛化训练: B acc=0.9892
+    W pre: sr=0.486 eff_rank=252 participation=184.3
+  Copy 2: A*=1.800
+    泛化训练: B acc=0.9892
+    W pre: sr=0.493 eff_rank=252 participation=183.3
+  Copy 3: A*=1.844
+    泛化训练: B acc=0.9892
+    W pre: sr=0.495 eff_rank=252 participation=183.3
+
+关键诊断数据已保存至: C:\Users\zhoux\claude-code-deepseek-v4-pro\idea\paper\code\runs\transplant_study
+  - native_D64.json: D=64 原版全谱+动力学+训练
+  - transplant_D256.json: D=256 移植版×3全谱+动力学+训练
+  - best_genome_D64.json: D=64 最优参数

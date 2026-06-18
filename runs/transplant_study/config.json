@@ -1,0 +1,9 @@
+{
+  "experiment": "transplant_study_method_A",
+  "date": "2026-06-13 13:05",
+  "target_D": 256,
+  "vocab": 30,
+  "seed": 42,
+  "method": "Direct parameter transplant (sr,gain,sp) with random W",
+  "mountain1_generalization": true
+}
