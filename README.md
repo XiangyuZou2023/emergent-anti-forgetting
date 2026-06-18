@@ -11,13 +11,15 @@ Reproduction code and data for the paper.
 | `run_astar_extra.py` | A* gating additional seeds (3 more) |
 | `figures.py` | Generate paper figures 1-4 from results.jsonl |
 | `fig_astar.py` | Generate A* gating figure 5 |
-| `results.jsonl` | Ablation raw data (18 records) |
+| `results.jsonl` | Ablation raw data (24 records) |
 | `astar_5seeds.json` | A* gating combined results (5 seeds) |
 | `gruau_result.json` | Gruau architecture learnability test |
 | `moe_result.json` | MoE survival-driven specialization |
 | `references.bib` | All citations in BibTeX format |
 | `sample_data.txt` | Chinese text corpus sample (300K chars) |
 | `requirements.txt` | Python dependencies |
+| `survival_axioms.lean` | Lean 4 formalization (Supplementary Material B) |
+| `survival_proof/` | Full Lean 4 project with lake dependencies |
 
 ## Quick Start
 
