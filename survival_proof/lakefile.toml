@@ -1,0 +1,15 @@
+name = "survival_proof"
+version = "0.1.0"
+defaultTargets = ["survival_proof"]
+
+[[lean_lib]]
+name = "SurvivalProof"
+
+[[lean_exe]]
+name = "survival_proof"
+root = "Main"
+
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4.git"
+rev = "v4.30.0"

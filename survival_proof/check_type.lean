@@ -1,0 +1,2 @@
+import Mathlib.Analysis.SpecificLimits.Basic
+#check tendsto_pow_atTop_nhds_zero_of_lt_one
